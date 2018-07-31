@@ -52,12 +52,13 @@ function onMessage(msg, sender, respond) {
 
 				// Reverse the url order so that we are opening in the correct order
 				for(let url of msg.tUrls.reverse()) {
+					let active = Prefs.SwitchFocusToNewTab ? (--TabsLeft) === 0 : false;	// Activate the last tab to be opened
 					let props = {
 						url:			url,
-						active: Prefs.SwitchFocusToNewTab ? (--TabsLeft) === 0 : false,	// Activate the last tab to be opened
+						active: active,
 						index:		tabs[0].index + 1,
 						// openerTabId: tabs[0].id,
-						discarded: Prefs.CreatingLazyTabs
+						discarded: !active && Prefs.CreatingLazyTabs // Prevent the "Active tabs cannot be created and discarded." error in Firefox.
 					};
 					if(isFirefox)
 						props.cookieStoreId = tabs[0].cookieStoreId;
