@@ -57,6 +57,7 @@ const DefaultPrefs = {
 	ActivateMouseButton: RMB,
 
 	DisableFontWeightFiltering: false,
+	CreatingLazyTabs: false,
 
 	DevMode:                false,
 	Dev_Log_ActionMessages: false,
