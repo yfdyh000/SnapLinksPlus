@@ -57,6 +57,7 @@ function onMessage(msg, sender, respond) {
 						active: Prefs.SwitchFocusToNewTab ? (--TabsLeft) === 0 : false,	// Activate the last tab to be opened
 						index:		tabs[0].index + 1,
 						// openerTabId: tabs[0].id,
+						discarded: Prefs.CreatingLazyTabs
 					};
 					if(isFirefox)
 						props.cookieStoreId = tabs[0].cookieStoreId;
